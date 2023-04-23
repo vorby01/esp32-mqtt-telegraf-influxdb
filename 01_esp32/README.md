@@ -18,7 +18,7 @@ Arduino IDE 2.1.0
   - Adafruit Unified Sensor by adafruit v1.1.9
   
   
-</code>
+'''C++
 //ESP32-Dev (DOIT ESP32 DEVKIT V1)
 #include <WiFi.h> //(board manager: esp32 v2.0.8)
 #include <ArduinoMqttClient.h> //(0.1.7) QoS: 0,1,2
@@ -328,5 +328,4 @@ void bme280_mqtt_send(){
   mqttClient.print(pressure);
   mqttClient.endMessage();
 }
-
-</code>
+'''
