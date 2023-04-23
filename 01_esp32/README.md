@@ -2,7 +2,7 @@
 # esp32 to collect enviroment data (temperature,humidity,pressure) and output to mqtt broker(server)
 
 I have three devices i have put together:
-  - esp32dvc (bme680, passive buzzer, tactile button)
+  - esp32dkc (bme680, passive buzzer, tactile button)
   - esp32d_1 (bme280)
   - esp32d_2 (bme280)
 
