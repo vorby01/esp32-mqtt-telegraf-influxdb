@@ -17,8 +17,11 @@ Arduino IDE 2.1.0
   - Adafruit BME280 Library by adafruit v2.2.2
   - Adafruit Unified Sensor by adafruit v1.1.9
   
-  
-''' C++
+### example code (C++)
+  - device_name needs to be unique for each use
+  - this script sets up topics compatible for home-assistant mqtt to automatically discover devices
+
+``` cpp
 //ESP32-Dev (DOIT ESP32 DEVKIT V1)
 #include <WiFi.h> //(board manager: esp32 v2.0.8)
 #include <ArduinoMqttClient.h> //(0.1.7) QoS: 0,1,2
@@ -29,7 +32,7 @@ Arduino IDE 2.1.0
 
 #include "secrets.h"
 
-const char* device_name = "esp32d_1";  //readonly*-------------------------------------------identifier
+const char* device_name = "esp32d_2";  //readonly*-------------------------------------------identifier
 
 //WiFi settings
 const char *wifi_ssid =  secret_wifi_ssid;
@@ -328,4 +331,4 @@ void bme280_mqtt_send(){
   mqttClient.print(pressure);
   mqttClient.endMessage();
 }
-'''
+```
