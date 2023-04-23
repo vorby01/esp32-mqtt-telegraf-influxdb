@@ -8,7 +8,7 @@ I have three devices i have put together:
 
 ### software
 Arduino IDE 2.1.0
-  - board libraries: esp32 by espressif systems v2.08
+  - board libraries: esp32 by espressif systems v2.0.8
 
 ### arduino libraries
   - ArduinoMqttClient by arduino v0.1.7
