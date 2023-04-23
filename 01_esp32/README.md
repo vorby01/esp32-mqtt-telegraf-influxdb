@@ -19,7 +19,8 @@ Arduino IDE 2.1.0
   
 ### example code (C++)
   - device_name needs to be unique for each use
-  - this script sets up topics compatible for home-assistant mqtt to automatically discover devices
+  - this script sets up topics compatible for home-assistant mqtt to automatically discover devices 
+  <discovery_prefix>/<component>/[<node_id>/]<object_id>/config
 
 ``` cpp
 //ESP32-Dev (DOIT ESP32 DEVKIT V1)
