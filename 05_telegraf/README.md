@@ -37,7 +37,7 @@ sudo systemctl start telegraf
 ### File output and permissions
 
 [[outputs.file]] <br />
-  files = ["stdout", "/data/telegraf.out"]
+  files = ["stdout", "/data/telegraf.out"]
 
 
 The action of every agent <br />
