@@ -39,10 +39,6 @@ sudo systemctl start telegraf
 [[outputs.file]] <br />
   files = ["stdout", "/data/telegraf.out"]
 
-
-The action of every agent <br />
-  into the world <br />
-
 ```
 sudo mkdir /data
 sudo chown user /data
