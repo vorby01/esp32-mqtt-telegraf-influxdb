@@ -27,3 +27,21 @@ sudo apt install mosquitto-clients
   ```sudo mv pwfile /etc/mosquitto/```
   
 ### Configure mosquitto mqtt broker
+/etc/mosquitto/mosquitto.conf
+<pass>
+pid_file /run/mosquitto/mosquitto.pid
+persistence true
+persistence_location /var/lib/mosquitto/
+log_dest file /var/log/mosquitto/mosquitto.log
+
+allow_anonymous false
+password_file /etc/mosquitto/pwfile
+
+#mosquitto default only available on localhost
+listener 1883 <ip_address>
+
+#mosquitto bind interface requires running with root privileges
+#bind_interface eth1
+
+include_dir /etc/mosquitto/conf.d
+</pass>
