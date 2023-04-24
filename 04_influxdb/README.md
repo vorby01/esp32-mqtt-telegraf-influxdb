@@ -1,5 +1,6 @@
 # Infludb
 influxdb (time-series database)
+ubuntu 22.04 (2023/04/24)
 
 ### Install influxdata key and repository (2023 04 24)
 ```
@@ -27,10 +28,20 @@ reporting-disabled = true
 sudo systemctl enable influxdb
 sudo systemctl start influxdb
 
+### Influxdb inital setup (set user,password,org,token)
+```
+influx setup
+```
 
-
+### Access Influxdb web interface
+http://127.0.0.1:8086
 
 ### Additional Influxdb commands
+Add user to influxdb group
+```
+sudo adduser user influxdb
+```
+
 Check influxdb2 install paths
 ```
 dpkg -L influxdb2
@@ -51,13 +62,18 @@ Clear data from influxdb bucket
 influx delete --org "" --bucket "" --token "" --start "1970-01-01T00:00:00Z" --stop $(date +"%Y-%m-%dT%H:%M:%SZ")
 ```
 
-Influxdb enviroment variables
+Influxdb update configuration
+```
+influx config create --config-name influx-config --host-url http://localhost:8086 --org "" --token "" --active
+```
+
+Influxdb enviroment variables </br>
 ~/.influxdbv2/configs
-<pass>
+<pre>
 [default]
   url = "http://localhost:8086"
   token = ""
   org = ""
   active = true
-</pass>
+</pre>
 
