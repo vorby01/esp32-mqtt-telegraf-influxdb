@@ -1,5 +1,5 @@
 # Infludb
-influxdb (time-series database)
+influxdb (time-series database) </br>
 ubuntu 22.04 (2023/04/24)
 
 ### Install influxdata key and repository (2023 04 24)
