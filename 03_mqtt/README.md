@@ -28,7 +28,7 @@ sudo apt install mosquitto-clients
   
 ### Configure mosquitto mqtt broker
 /etc/mosquitto/mosquitto.conf
-<pass>
+```
 pid_file /run/mosquitto/mosquitto.pid
 persistence true
 persistence_location /var/lib/mosquitto/
@@ -44,4 +44,4 @@ listener 1883 <ip_address>
 #bind_interface eth1
 
 include_dir /etc/mosquitto/conf.d
-</pass>
+```
