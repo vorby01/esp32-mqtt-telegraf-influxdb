@@ -24,7 +24,7 @@ dtparam=poe_fan_temp3=65000,poe_fan_temp0_hyst=5000
   - Click on blue dot in web interface to view installation details
   
 ### Additional resources
-  - Install home-assistant add-on: File Editor
+  - Install home-assistant add-on: File Editor </br>
   ```settings > add-ons > add-on store > file editor```
   - Home assistant configuration </br>
   /config/configuration.yaml
