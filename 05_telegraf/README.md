@@ -16,7 +16,7 @@ sudo apt install telegraf
 
 ### Configure telegraf
 /etc/telegraf/telegraf.conf
-  - will require influxdb token to access
+  - will require influxdb token for read/write access
 
 <pre>
 [agent]
