@@ -1,4 +1,4 @@
-# Infludb
+# Influxdb
 influxdb (time-series database) </br>
 ubuntu 22.04 (2023/04/24)
 
@@ -18,7 +18,7 @@ sudo apt install influxdb2
 ### Configure telegraf
 /etc/influxdb/config.toml
 
-#### influxdb telementry is enabled by default, to disable
+#### Influxdb telementry is enabled by default, to disable
 /etc/influxdb/config.toml
 ```
 reporting-disabled = true
