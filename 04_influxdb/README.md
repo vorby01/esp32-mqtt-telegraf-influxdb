@@ -51,4 +51,13 @@ Clear data from influxdb bucket
 influx delete --org "" --bucket "" --token "" --start "1970-01-01T00:00:00Z" --stop $(date +"%Y-%m-%dT%H:%M:%SZ")
 ```
 
+Influxdb enviroment variables
+~/.influxdbv2/configs
+<pass>
+[default]
+  url = "http://localhost:8086"
+  token = ""
+  org = ""
+  active = true
+</pass>
 
