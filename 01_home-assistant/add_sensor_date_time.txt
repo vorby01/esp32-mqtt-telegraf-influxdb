@@ -1,0 +1,17 @@
+# Home assistant add as sensor date and time
+configuration.yaml
+
+```
+#Add Date/Time as sensor
+  - platform: time_date
+    display_options:
+      - "time"
+      - "date"
+  - platform: template
+    sensors:
+      current_date_time:
+        value_template: >
+          {% set x = states('sensor.time') %}
+          {{ now().strftime("%A") + now().strftime(", %-I:%M %p")}}
+        friendly_name: "Current Date/Time"
+```
