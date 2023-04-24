@@ -21,7 +21,7 @@ sudo apt install mosquitto-clients
   ```mosquitto_passwd -U pwfile```
   
   - check password file encrypt: </br>
-  cat pwfile
+  ```cat pwfile```
   
   - move password file to mosquitto directory: </br>
   ```sudo mv pwfile /etc/mosquitto/```
