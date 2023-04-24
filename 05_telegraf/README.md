@@ -31,6 +31,9 @@ sudo systemctl start telegraf
 ```
 
 ### File output and permissions
+[[outputs.file]]
+  files = ["stdout", "/data/telegraf.out"]
+
 ```
 sudo mkdir /data
 sudo chown user /data
