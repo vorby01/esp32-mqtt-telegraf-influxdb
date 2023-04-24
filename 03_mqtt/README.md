@@ -1,5 +1,5 @@
 # Mosquitto MQTT
-mqtt broker
+mqtt broker (publish/subscribe)
 
 ### Install mosquitto mqtt broker
 ```
