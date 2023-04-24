@@ -1,0 +1,15 @@
+# Home assistant install Network UPS tools (NUT)
+
+  - Install Network UPS Tools
+  ``` settings > add-ons > add-on store > network ups tools ```
+
+  - Configure settings:
+  ``` settings > add-ons > network ups tools > configuration ```
+      username: ""
+      password: ""  (will check password against known hacked database)(check log)
+
+  - Install network ups tool integration
+  ``` settings > devices & services > add intergration > network ups tools (NUT) ```
+      # host will be on Network UPS Tools add-on info page
+      host: 
+      port: 3493
