@@ -18,6 +18,10 @@ sudo apt install telegraf
 /etc/telegraf/telegraf.conf
   - will require influxdb token to access
   - 
+<pre>
+
+</pre>
+
 
 ### Test telegraf configuration
 ```
@@ -31,10 +35,13 @@ sudo systemctl start telegraf
 ```
 
 ### File output and permissions
-<pre>
-[[outputs.file]]
+
+[[outputs.file]] <br />
   files = ["stdout", "/data/telegraf.out"]
-</pre>
+
+
+The action of every agent <br />
+  into the world <br />
 
 ```
 sudo mkdir /data
