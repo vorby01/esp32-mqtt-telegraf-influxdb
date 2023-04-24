@@ -31,8 +31,10 @@ sudo systemctl start telegraf
 ```
 
 ### File output and permissions
+```
 sudo mkdir /data
 sudo chown user /data
 touch /data/telegraf.out
 sudo chgrp /data/telegraf.out telegraf
 sudo chmod 766 /data/telegraf.out
+```
