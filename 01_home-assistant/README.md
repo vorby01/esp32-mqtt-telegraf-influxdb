@@ -38,7 +38,8 @@ homeassistant:
 
 #### Home assistant configuration
 /config/configuration.yaml
-</br>
+  - hassos default config location </br>
+  /config/.storage/core.config_entries
 
 #### Additional logging
 configuration.yaml
