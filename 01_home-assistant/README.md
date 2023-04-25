@@ -70,10 +70,11 @@ The discovery topic needs to follow a specific format: </br>
 home assistant default mqtt discovery topic: homeassistant </br>
 home assistant discovery payload must be sent as a serialized json </br>
 
-#### MQTT home assistant discovery example
+### MQTT home assistant discovery example
 ```
 Device name: esp32d_1
 sensor: bme280(temperature, humidity, pressure)
+readings: temperature:24.72, humidity:50.53, pressure:101426
 ```
 
 MQTT configuration topics (each reading type as sperate homeassitant entity)</br>
@@ -89,7 +90,7 @@ MQTT configuration payloads
 {"name":"esp32d_1_humidity","unique_id":"esp32d_1_humidity_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/humidity/state","unit_of_measurement":"%","device_class":"humidity","value_template":"{{value|float|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
 ```
 ```
-{"name":"esp32d_1_pressure","unique_id":"esp32d_1_pressure_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/pressure/state","unit_of_measurement":"hPa","device_class":"pressure","value_template":"{{value|int/100|default(0)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
+{"name":"esp32d_1_pressure","unique_id":"esp32d_1_pressure_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/pressure/state","unit_of_measurement":"hPa","device_class":"pressure","value_template":"{{value|int/100|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
 ```
 
 Example pretified json
@@ -115,4 +116,16 @@ Example pretified json
  }
 }
 ```
+
+MQTT update sensor readings to mqtt state topic as set in config payload
+```
+homeassistant/sensor/esp32d_1/temperature/state:24.72
+```
+```
+homeassistant/sensor/esp32d_1/humidity/state:50.53
+```
+```
+homeassistant/sensor/esp32d_1/pressure/state:101426
+```
+
 
