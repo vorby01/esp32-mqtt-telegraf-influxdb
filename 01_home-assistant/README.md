@@ -53,6 +53,19 @@ logger:
 ```
 
 #### Mosquitto Mqtt
-  - ended up switching to running a external mqtt broker
+  - ended up switching to running a external mqtt broker (more control)
   - Add mqtt integration to home assistant </br>
   ```settings > devices & services > add-integration > MQTT```
+  
+#### Home assistant mqtt discovery
+The discovery topic needs to follow a specific format: </br>
+<discovery_prefix>/\<component>\/[<node_id>/]<object_id>/config
+</br>
+<discovery_prefix> - mqtt discovery topic (homeassistant) </br>
+<component> - a supported mqtt component (sensor) </br>
+<node_id> - (optional) not used by home assistant </br>
+<object_id> - id of device (seperate topics per device)[a-zA-Z0-9_-] Best practice for entities with a unique_id is to set <object_id> to unique_id </br>
+
+home assistant default mqtt discovery topic: homeassistant
+
+
