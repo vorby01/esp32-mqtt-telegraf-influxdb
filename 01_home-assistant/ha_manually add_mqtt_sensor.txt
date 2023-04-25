@@ -1,0 +1,39 @@
+# Manually add mqtt sensors to home assistant
+configuration.yaml
+
+```
+#mqtt sensors (manual configuration)
+mqtt:
+  sensor:
+    - name: "esp32dev_bme280_1_temperature"
+      unique_id: esp32dev_bme280_1_temperature
+      state_topic: "esp32dev_bme280_1/temperature"
+      unit_of_measurement: "°C"
+      device_class: "temperature"
+      device: {
+        identifiers: "esp32dev_bme280_1",
+        manufacturer: "CUSTOM",
+        model: "temperature_humidity_pressure",
+        name: "esp32dev_bme280"
+      }
+    - name: "esp32dev_bme280_1_humidity"
+      state_topic: "esp32dev_bme280_1/humidity"
+      unit_of_measurement: "%"
+      unique_id: esp32dev_bme280_1_humidity
+      device: {
+        identifiers: "esp32dev_bme280_1",
+        name: "esp32dev_bme280",
+        model: "temperature_humidity_pressure",
+        manufacturer: "CUSTOM"
+      }
+    - name: "esp32dev_bme280_1_pressure"
+      state_topic: "esp32dev_bme280_1/pressure"
+      unit_of_measurement: "hPa"
+      unique_id: esp32dev_bme280_1_pressure
+      device: {
+        identifiers: "esp32dev_bme280_1",
+        name: "esp32dev_bme280",
+        model: "temperature_humidity_pressure",
+        manufacturer: "CUSTOM"
+      }
+```
