@@ -24,30 +24,32 @@ dtparam=poe_fan_temp3=65000,poe_fan_temp0_hyst=5000
   - Click on blue dot in web interface to view installation details
   
 ### Additional resources
-  - Install home-assistant add-on: File Editor </br>
-  ```settings > add-ons > add-on store > file editor```
-  </br>
-  - File editor allow navigating whole file system </br>
-  ```
-  homeassistant:
-    allowlist_external_dirs:
-    - /config
-  ```
-  </br>
-  - Home assistant configuration </br>
-  /config/configuration.yaml
-  </br>
-  - additional logging </br>
-  configuration.yaml </br>
-  ```
-  logger:
+#### Install home-assistant add-on: File Editor
+```settings > add-ons > add-on store > file editor```
+</br>
+  
+#### File editor allow navigating whole file system
+configuration.yaml
+```
+homeassistant:
+  allowlist_external_dirs:
+  - /config 
+```
+
+#### Home assistant configuration
+/config/configuration.yaml
+</br>
+
+#### Additional logging
+configuration.yaml
+```
+logger:
   #default: info
   default: warning  
   logs:  
     homeassistant.components.mqtt: debug
     homeassistant.core: critical
-  ```
-
+```
 
 #### Mosquitto Mqtt
   - ended up switching to running a external mqtt broker
