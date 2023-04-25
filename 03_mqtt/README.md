@@ -80,9 +80,76 @@ The discovery topic needs to follow a specific format: </br>
 home assistant default mqtt discovery topic: homeassistant </br>
 home assistant discovery payload must be sent as a serialized json </br>
 
-MQTT configuration topic </br>
-```homeassistant/sensor/<object_id>/config``` </br>
-MQTT configuration payload </br>
+### MQTT home assistant discovery example
 ```
-{"name":"","uniq_id":"","stat_t":"homeassistant/sensor/<object_id>/state","unit_of_meas":"","dev_cla":"","val_tpl":"{{value|default(0)|round(2)}}"}
+Device name: esp32d_1
+sensor: bme280(temperature, humidity, pressure)
+readings: temperature:24.72, humidity:50.53, pressure:101426
+```
+
+MQTT configuration topics (each reading type as sperate homeassitant entity)</br>
+```homeassistant/sensor/esp32d_1/temperature/config``` </br>
+```homeassistant/sensor/esp32d_1/humidity/config``` </br>
+```homeassistant/sensor/esp32d_1/pressure/config``` </br>
+
+MQTT configuration payloads
+```
+{"name":"esp32d_1_temperature","unique_id":"esp32d_1_temperature_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/temperature/state","unit_of_measurement":"C","device_class":"temperature","value_template":"{{value|float|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
+```
+```
+{"name":"esp32d_1_humidity","unique_id":"esp32d_1_humidity_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/humidity/state","unit_of_measurement":"%","device_class":"humidity","value_template":"{{value|float|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
+```
+```
+{"name":"esp32d_1_pressure","unique_id":"esp32d_1_pressure_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/pressure/state","unit_of_measurement":"hPa","device_class":"pressure","value_template":"{{value|int/100|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
+```
+
+Example pretified json
+```
+{
+  "name":"esp32d_1_temperature",
+  "unique_id":"esp32d_1_temperature_uid",
+  "availability_topic":"homassistant/esp32d_1/status",
+  "payload_available":"online",
+  "payload_not_available:"offline:,
+  "state_topic":"homeassistant/sensor/esp32d_1/temperature/state",
+  "unit_of_measurement":"C",
+  "device_class":"temperature",
+  "value_template":"{{value|float|default(0)|round(2)}}",
+  "device":{
+    "identifiers:[
+      "esp32d_1"
+    ],
+    "manufacturer":"esp32d_1",
+    "model":"esp32d_1",
+    "name":"esp32d_1"
+   }
+ }
+}
+```
+
+MQTT update sensor readings to mqtt state topic as set in config payload
+```
+homeassistant/sensor/esp32d_1/temperature/state:24.72
+```
+```
+homeassistant/sensor/esp32d_1/humidity/state:50.53
+```
+```
+homeassistant/sensor/esp32d_1/pressure/state:101426
+```
+
+### Commands for mqtt client (manually send mqtt)
+home assistant mqtt discovery create entity
+```
+mosquitto_pub -h <host_address> -p 1883 -u <mqtt_user> -P <mqtt_password> -t homeassistant/sensor/esp32d_1/temperature/config -m '{"name":"esp32d_1_temperature","unique_id":"esp32d_1_temperature_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/temperature/state","unit_of_measurement":"C","device_class":"temperature","value_template":"{{value|float|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}'
+```
+
+home assistant mqtt discovery remove entity (sending blank config removes from home assistant)
+```
+mosquitto_pub -r -h <host_address> -p 1883 -u <mqtt_user> -P <mqtt_password> -t homeassistant/sensor/test/temperature/config -m '{}'
+```
+
+home assistant mqtt update state
+```
+mosquitto_pub -r -h <host_address> -p 1883 -u <mqtt_user> -P <mqtt_password> -t homeassistant/sensor/test/temperature/state -m '24.72'
 ```
