@@ -153,3 +153,8 @@ home assistant mqtt update state
 ```
 mosquitto_pub -r -h <host_address> -p 1883 -u <mqtt_user> -P <mqtt_password> -t homeassistant/sensor/test/temperature/state -m '24.72'
 ```
+
+### Install mqtt-explorer (ubuntu 22.04)
+http://mqtt-explorer.com </br>
+interface to visulize mqtt topics
+``` snap install mqtt-explorer ```
