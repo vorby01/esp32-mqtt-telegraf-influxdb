@@ -70,8 +70,8 @@ The discovery topic needs to follow a specific format: </br>
 home assistant default mqtt discovery topic: homeassistant </br>
 home assistant discovery payload must be sent as a serialized json </br>
 
-MQTT configuration topic
+MQTT configuration topic </br>
 ```homeassistant/sensor/<object_id>/config```
-MQTT configuration payload
+MQTT configuration payload </br>
 ```{"name":"","uniq_id":"","stat_t":"homeassistant/sensor/<object_id>/state","unit_of_meas":"","dev_cla":"","val_tpl":"{{value|default(0)|round(2)}}"}```
 
