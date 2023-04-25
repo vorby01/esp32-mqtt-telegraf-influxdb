@@ -70,10 +70,49 @@ The discovery topic needs to follow a specific format: </br>
 home assistant default mqtt discovery topic: homeassistant </br>
 home assistant discovery payload must be sent as a serialized json </br>
 
-MQTT configuration topic </br>
-```homeassistant/sensor/<object_id>/config``` </br>
-MQTT configuration payload </br>
+#### MQTT home assistant discovery example
 ```
-{"name":"","uniq_id":"","stat_t":"homeassistant/sensor/<object_id>/state","unit_of_meas":"","dev_cla":"","val_tpl":"{{value|default(0)|round(2)}}"}
+Device name: esp32d_1
+sensor: bme280(temperature, humidity, pressure)
+```
+
+MQTT configuration topics (each reading type as sperate homeassitant entity)</br>
+```homeassistant/sensor/esp32d_1/temperature/config``` </br>
+```homeassistant/sensor/esp32d_1/humidity/config``` </br>
+```homeassistant/sensor/esp32d_1/pressure/config``` </br>
+
+MQTT configuration payloads
+```
+{"name":"esp32d_1_temperature","unique_id":"esp32d_1_temperature_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/temperature/state","unit_of_measurement":"C","device_class":"temperature","value_template":"{{value|float|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
+```
+```
+{"name":"esp32d_1_humidity","unique_id":"esp32d_1_humidity_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/humidity/state","unit_of_measurement":"%","device_class":"humidity","value_template":"{{value|float|default(0)|round(2)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
+```
+```
+{"name":"esp32d_1_pressure","unique_id":"esp32d_1_pressure_uid","availability_topic":"homassistant/esp32d_1/status","payload_available":"online","payload_not_available:"offline:,"state_topic":"homeassistant/sensor/esp32d_1/pressure/state","unit_of_measurement":"hPa","device_class":"pressure","value_template":"{{value|int/100|default(0)}}","device":{"identifiers:["esp32d_1"],"manufacturer":"esp32d_1","model":"esp32d_1","name":"esp32d_1"}}
+```
+
+Example pretified json
+```
+{
+  "name":"esp32d_1_temperature",
+  "unique_id":"esp32d_1_temperature_uid",
+  "availability_topic":"homassistant/esp32d_1/status",
+  "payload_available":"online",
+  "payload_not_available:"offline:,
+  "state_topic":"homeassistant/sensor/esp32d_1/temperature/state",
+  "unit_of_measurement":"C",
+  "device_class":"temperature",
+  "value_template":"{{value|float|default(0)|round(2)}}",
+  "device":{
+    "identifiers:[
+      "esp32d_1"
+    ],
+    "manufacturer":"esp32d_1",
+    "model":"esp32d_1",
+    "name":"esp32d_1"
+   }
+ }
+}
 ```
 
