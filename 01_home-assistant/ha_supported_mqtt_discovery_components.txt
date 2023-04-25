@@ -1,0 +1,23 @@
+#Supported mqtt discovery components
+Alarm control panel
+Binary sensor
+Button
+Camera
+Cover
+Device Tracker
+Device Trigger
+Fan
+Humidifier
+Climate/HVAC
+Light
+Lock
+Number
+Scene
+Select
+Sensor
+Siren
+Switch
+Update
+Tag Scanner
+Text
+Vacuum
